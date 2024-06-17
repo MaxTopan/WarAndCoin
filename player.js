@@ -1,12 +1,28 @@
 import Deck from "./deck.js"
 
-// create player class
-// players have 3 decks: drawPile, hand, discardPile
-
 export default class Player {
-    constructor(drawPile, hand = new Deck([],[]), discardPile = new Deck([],[])) {
+    constructor(hitPoints, drawPile, hand = [], discardPile = []) {
+        this.hitPoints = hitPoints;
         this.drawPile = Deck.setCards(drawPile);
-        this.hand = hand
-        this.discardPile = discardPile
+
+        this.hand = Deck.setCards(hand);
+        this.discardPile = Deck.setCards(discardPile);
+        this.selectedCards = [];
+    }
+
+    draw(num = 1) {
+        this.hand.push(this.drawPile.pop(num));
+    }
+
+    select (cards) {
+        
+    }
+
+    // play() {
+
+    // }
+
+    discardHand() {
+        this.discardPile.push(this.hand.cards);
     }
 }
