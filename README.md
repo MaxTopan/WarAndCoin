@@ -47,7 +47,10 @@ BJ/BQ/BK: 10/15/20
 Choose up to two cards in hand to burn (of one or both). These cards are taken out of the game and are not shuffled back in with the rest of the discard deck.
 
 <li><h4>Place Shields</h4></li>
-Play one or more shields by placing them landscape on the field. You cannot have more than one of the same shield value on the field at once.
+Play one or more shields by placing them landscape on the field.<br>
+Shield values:<br>
+J/Q/K: 5/10/15<br><br>
+You cannot have more than one of the same shield value on the field at once.
 For example:<br>
 ✅ J, Q<br>
 ❌ J, J<br>
@@ -56,22 +59,23 @@ See Special Cards for more details.
 
 
 <h3>After Actions</h3>
-Played and bought cards go in the players discard. A player may also discard all unused cards after taking their action
+Played and bought cards go in the players discard pile. A player may also discard all unused cards after taking their action.
 
 <h3>End of Turn</h3>
-After taking their turn, players draw back up to 4 cards. If a player needs to draw and there are no cards in their deck, shuffle the discard pile and turn it face down as the deck. There is no minimum deck size.
+After taking their turn, players draw back up to 4 cards. If a player needs to draw and there are no cards in their deck, they shuffle their discard pile and turn it face down as their deck. There is no minimum deck size.
 
 
 
 <h3>Special Cards</h3>
 <h4>Aces</h4>
 Aces duplicate the value of the highest card of that colour when played. (Eg A♠️, 7♣️, 6♠️ deals 20 instead of 13. A♦️, 3♥️,  5♦️ is worth 13 instead of 8)
-       
-<h4>Faces</h4>
-Black face cards are placed landscape in front of a player when bought, and act as shields.
-J/Q/K defends 5/10/15 damage. (Subtract that from the damage dealt).
-If an attack deals the shield amount or more, the shield card is put in the discard pile and the remaining damage goes through.
-If a player draws a shield, they can spend their turn to place it on the field. You can place multiple shield cards in one turn. 
-You can't have multiple of the same shield card on the field; if you have eg a BQ on field and a BQ in hand, you can discard on your turn, or wait until the shield breaks.
 
+<h4>Faces</h4>
+Black face cards are placed landscape in front of a player when bought, and act as shields.<br>
+J/Q/K defends 5/10/15 damage. (Subtract that from the damage dealt).<br>
+If an attack deals the shield amount or more, the shield card is put in the discard pile and the remaining damage goes through to the player.<br>
+Shield damage does not carry over between turns (for example, you cannot break a king shield by doing 5 on one turn, then 10 on the next).<br>
+If a player draws a shield, they can spend their turn to place it on the field. You can place multiple shield cards in one turn. <br>
+You can't have multiple of the same shield card on the field.<br>
+<br>
 Red face cards go in the discard pile when bought. If a red face card is in hand at the beginning of a players turn, they place it automatically (they can still take their action for the turn). If a player has the whole red face set (J/Q/K) on the field, they win.
