@@ -109,5 +109,3 @@ function newDeck(suits, values) {
 //         }
 //     }
 // }
-
-module.exports = Deck;

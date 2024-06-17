@@ -1,0 +1,20 @@
+{
+  "name": "warandcoin",
+  "version": "0.0.1",
+  "description": "A javascript playing card game",
+  "main": "index.html",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MaxTopan/WarAndCoin.git"
+  },
+  "keywords": [],
+  "author": "Max Topan",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.24.7",
+    "jest": "^29.7.0"
+  }
+}
