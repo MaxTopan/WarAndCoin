@@ -1,4 +1,3 @@
-//const deck = require('../src/deck.js')
 import Deck from '../src/deck.js';
 
 describe('Deck class', () => {
