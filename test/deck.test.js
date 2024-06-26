@@ -22,7 +22,32 @@ describe('Deck class', () => {
         expect(a).toEqual(b);
     });
 
-    describe('remove', () => {
+    describe('add()', () => {
+        test('should add one card to deck', () => {
+            let origAmount = deck.cards.length;
+            let card = new Card("♠", "13");            
+            deck.add(card);
+
+            expect(deck.cards.length).toEqual(origAmount + 1);
+            expect(deck.cards).toContainEqual(card);
+        });
+
+        test('should add multiple cards to deck', () => {
+            let cardA = new Card("♠", "13");            
+            let cardB = new Card("♠", "14");            
+            let cardC = new Card("♠", "15");     
+            let cards = [[cardA, cardB, cardC]];
+
+            let origAmount = deck.cards.length;
+            
+            deck.add(cards);
+
+            expect(deck.cards.length).toEqual(origAmount + cards.length);
+            cards.forEach(card => expect(deck.cards).toContainEqual(card));
+        });
+    });
+
+    describe('remove()', () => {
         test('should remove one card from deck', () => {
             let card = deck.cards[Math.floor(Math.random() * 52) + 1];
             let origLength = deck.cards.length;
@@ -61,8 +86,8 @@ describe('Deck class', () => {
         });
     });
 
-    describe('shuffle', () => {
-        test('order should change', () => {
+    describe('shuffle()', () => {
+        test('should change order', () => {
             let a = [...deck.cards];
             deck.shuffle();
             let b = [...deck.cards];
@@ -71,7 +96,7 @@ describe('Deck class', () => {
             expect(a.sort()).toEqual(b.sort());
         });
 
-        test('number of cards should remain the same', () => {
+        test('should not affect number of cards', () => {
             let a = [...deck.cards];
             deck.shuffle();
             let b = [...deck.cards];

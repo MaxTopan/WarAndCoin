@@ -13,11 +13,12 @@ export default class Deck {
 	static setCards(cards) {
 		let deck = new Deck([], []);
 		if (cards != null) {
-			deck.push(cards);
+			deck.add(cards);
 		}
 		return deck;
 	}
 
+	// convert contents of deck to string
 	toString() {
 		let cards = "";
 		for (let i = 0; i < this.numOfCards; i++) {
@@ -31,16 +32,18 @@ export default class Deck {
 		return this.cards.length;
 	}
 
-	push(toAdd) {
+	// adds specified cards to the deck
+	add(toAdd) {
 		if (toAdd instanceof Card) {
 			this.cards.push(toAdd);
 			return;
 		}
-		for (let i = 0; i < toAdd.length; i++) {
-			this.cards.push(toAdd[i]);
+		for (let card of toAdd) {
+			this.cards.push(card);
 		}
 	}
 
+	// remove specified cards from the deck
 	remove(toRemove) {
 		if (toRemove instanceof Card) {
 			let index = this.cards.indexOf(toRemove);
@@ -53,6 +56,7 @@ export default class Deck {
 		}
 	}
 	
+	// draw @num cards from the top of the deck
 	draw(num = 1) {
 		let drawn = [];
 		for (let i = 0; i < num; i++) {
