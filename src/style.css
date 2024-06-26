@@ -1,43 +1,46 @@
-:root{
+:root {
     --card-width: 9rem;
     --card-height: calc(var(--card-width) * 1.4);
-    --num-cards:8;
-    --card-horizontal-space:100px;
+    --num-cards: 8;
+    --card-horizontal-space: 100px;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
-  }
+}
 
-h1{
-    color:white;
+h1 {
+    color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 100;
 }
 
-body{
+body {
     background-color: rgb(40, 86, 40);
-    height:100vh;
+    height: 100vh;
 }
 
-main{
+main {
     height: 100%;
     display: flex;
     justify-content: center;
 }
 
-.board-container{
+.board-container {
     position: relative;
-    height: 50%; /*FIX THIS CONTAINER SIZING!!!!*/
+    height: 50%;
+    /*FIX THIS CONTAINER SIZING!!!!*/
     width: calc(var(--card-width) * (var(--num-cards) / 2) + var(--card-horizontal-space));
     display: grid;
     gap: 0.5rem;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 0.5fr 1fr 0.5fr;
     grid-template-areas: "rr rj rq rk"
-                         "t1 t2 t3 t4"
-                         "br bj bq bk"
-                         "t5 t6 t7 t8";
+        "t1 t2 t3 t4"
+        "br bj bq bk"
+        "t5 t6 t7 t8";
     border: white solid 1px;
 }
 
@@ -46,14 +49,46 @@ main{
     color: white;
 }
 
-.board-pos.rr{ grid-area: rr; }
-.board-pos.rj{ grid-area: rj; }
-.board-pos.rq{ grid-area: rq; }
-.board-pos.rk{ grid-area: rk; }
-.board-pos.br{ grid-area: br; }
-.board-pos.bj{ grid-area: bj; }
-.board-pos.bq{ grid-area: bq; }
-.board-pos.bk{ grid-area: bk; }
+.board-pos.rr {
+    grid-area: rr;
+}
+
+.board-pos.rj {
+    grid-area: rj;
+}
+
+.board-pos.rq {
+    grid-area: rq;
+}
+
+.board-pos.rk {
+    grid-area: rk;
+}
+
+.board-pos.br {
+    grid-area: br;
+}
+
+.board-pos.bj {
+    grid-area: bj;
+}
+
+.board-pos.bq {
+    grid-area: bq;
+}
+
+.board-pos.bk {
+    grid-area: bk;
+}
+
+/* .board-pos.cost {
+    border: white solid 1px;
+} */
+
+/* ! For testing - replace with better selected effect later ! */
+.card.selected {
+    border: red dashed 1px;
+}
 
 .card {
     position: relative;
@@ -67,20 +102,21 @@ main{
     align-items: center;
     font-size: 5rem;
     user-select: none;
+    cursor: pointer;
 }
 
 .card.back {
-  background: darkred;
-  border: white solid 0.2rem;
-  background-image: repeating-linear-gradient(45deg, transparent 0 0.5rem, white 0.5rem 0.55rem),
-  repeating-linear-gradient(-45deg, transparent 0 0.5rem, white 0.5rem 0.55rem);
+    background: darkred;
+    border: white solid 0.2rem;
+    background-image: repeating-linear-gradient(45deg, transparent 0 0.5rem, white 0.5rem 0.55rem),
+        repeating-linear-gradient(-45deg, transparent 0 0.5rem, white 0.5rem 0.55rem);
 }
 
-.card.red{
+.card.red {
     color: red;
 }
 
-.card.black{
+.card.black {
     color: black;
 }
 
@@ -119,7 +155,7 @@ main{
     margin: auto;
     bottom: 0em;
     background-color: hotpink;
-    
+
 }
 
 /* 3D FLIP

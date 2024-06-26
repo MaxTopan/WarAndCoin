@@ -11,7 +11,7 @@ export default class Player {
     }
 
     draw(num = 1) {
-        this.hand.push(this.drawPile.pop(num));
+        this.hand.push(this.drawPile.draw(num));
     }
 
     select (cards) {
