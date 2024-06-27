@@ -127,7 +127,7 @@ main {
     font-size: 2rem;
 }
 
-.face.card {
+/* .face.card {
     background-color: hotpink;
 }
 
@@ -135,7 +135,7 @@ main {
 .face.card::after {
     content: attr(data-value);
     content: attr(data-shield);
-}
+} */
 
 .card::before {
     top: 0.5rem;
@@ -156,6 +156,25 @@ main {
     bottom: 0em;
     background-color: hotpink;
 
+}
+
+.actions-container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    bottom: 0em;
+    right: 0em;
+    width: 15.5%;
+    height: 25%;
+    border: 1px solid white;
+}
+
+.action {
+    width: 80%;
+    height: 20%;
+    margin: 1px;
 }
 
 /* 3D FLIP
