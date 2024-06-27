@@ -24,11 +24,11 @@ describe('Deck class', () => {
 
     describe('add()', () => {
         test('should add one card to deck', () => {
-            let origAmount = deck.cards.length;
+            let origAmount = deck.length;
             let card = new Card("♠", "13");            
             deck.add(card);
 
-            expect(deck.cards.length).toEqual(origAmount + 1);
+            expect(deck.length).toEqual(origAmount + 1);
             expect(deck.cards).toContainEqual(card);
         });
 
@@ -38,11 +38,11 @@ describe('Deck class', () => {
             let cardC = new Card("♠", "15");     
             let cards = [[cardA, cardB, cardC]];
 
-            let origAmount = deck.cards.length;
+            let origAmount = deck.length;
             
             deck.add(cards);
 
-            expect(deck.cards.length).toEqual(origAmount + cards.length);
+            expect(deck.length).toEqual(origAmount + cards.length);
             cards.forEach(card => expect(deck.cards).toContainEqual(card));
         });
     });
@@ -50,39 +50,39 @@ describe('Deck class', () => {
     describe('remove()', () => {
         test('should remove one card from deck', () => {
             let card = deck.cards[Math.floor(Math.random() * 52) + 1];
-            let origLength = deck.cards.length;
+            let origLength = deck.length;
 
             expect(deck.cards).toContainEqual(card);
 
             deck.remove(card);
 
-            expect(deck.cards.length).toEqual(origLength - 1);
+            expect(deck.length).toEqual(origLength - 1);
             expect(deck.cards).not.toContainEqual(card);
         });
 
         test('should remove multiple cards from deck', () => {
             let cards = deck.cards.slice(5, 10);
-            let origLength = deck.cards.length;
+            let origLength = deck.length;
 
             cards.forEach(card => expect(deck.cards).toContainEqual(card));
 
             deck.remove(cards);
 
-            expect(deck.cards.length).toEqual(origLength - cards.length);
+            expect(deck.length).toEqual(origLength - cards.length);
             cards.forEach(card => expect(deck.cards).not.toContainEqual(card));
         });
 
         test('should remove nothing if card specified is not in deck', () => {
-            let origLength = deck.cards.length;
+            let origLength = deck.length;
             let card = new Card("£", "1");
             
             expect(deck.cards).not.toContainEqual(card);
-            expect(deck.cards.length).toEqual(52);
+            expect(deck.length).toEqual(52);
 
             deck.remove(card);
 
             expect(deck.cards).not.toContainEqual(card);
-            expect(deck.cards.length).toEqual(52);
+            expect(deck.length).toEqual(52);
         });
     });
 

@@ -18,6 +18,10 @@ export default class Deck {
 		return deck;
 	}
 
+	get length() {
+		return this.cards.length;
+	}
+
 	// convert contents of deck to string
 	toString() {
 		let cards = "";
