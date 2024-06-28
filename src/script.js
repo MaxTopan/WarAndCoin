@@ -1,30 +1,17 @@
 import Deck from "./deck.js";
 import Player from "./player.js";
 import Board from "./board.js"
-
-const Actions = Object.freeze({
-	BUY: "buy",
-	BURN: "burn",
-	DAMAGE: "damage",
-	DISCARD: "discard"
-});
-
-const Colours = Object.freeze({
-	RED: "red",
-	BLACK: "black",
-	MIX: "mix"
-});
+import { Colours, Actions } from "./constants.js"
 
 const actionButtons = [...document.getElementsByClassName("action")];
 
 let board;
-let	p1, p2, activePlayer;
+let p1, p2, activePlayer;
 const hitPoints = 40;
 
 window.onload = function () {
 	var parentDiv = document.querySelector(".board-container");
 	parentDiv.addEventListener("click", toggleCardSelected);
-
 	startGame();
 };
 
@@ -109,7 +96,7 @@ function burn(cards) {
 	activePlayer.hand.remove(cards);
 }
 
-function buy() { 
+function buy() {
 	// add bought card to activePlayer's discard pile
 }
 
