@@ -1,5 +1,5 @@
 import Deck from "./deck.js";
-import Player from "./player.js";
+import Player, { initialisePlayers } from "./player.js";
 import Board from "./board.js"
 import { Colours, Actions } from "./constants.js"
 
@@ -7,30 +7,12 @@ const actionButtons = [...document.getElementsByClassName("action")];
 
 let board;
 let p1, p2, activePlayer;
-const hitPoints = 40;
 
 window.onload = function () {
 	var parentDiv = document.querySelector(".board-container");
 	parentDiv.addEventListener("click", toggleCardSelected);
 	startGame();
 };
-
-function initialisePlayers() {
-	let rStarters = new Deck(["♥", "♦"], ["2", "3", "4"]);
-	let bStarters = new Deck(["♠", "♣"], ["2", "3", "4"]);
-
-	p1 = new Player(hitPoints, rStarters.draw(3).concat(bStarters.draw(3)));
-	p1.drawPile.shuffle();
-
-	p2 = new Player(hitPoints, rStarters.draw(3).concat(bStarters.draw(3)));
-	p2.drawPile.shuffle();
-
-	p1.draw(4);
-	p2.draw(4);
-
-	console.log(`p1 hand: ${p1.hand.toString()}`);
-	console.log(`p1 deck: ${p1.drawPile.toString()}`);
-}
 
 function toggleCardSelected(event) {
 	let element = event.target;
@@ -105,7 +87,6 @@ function damage() { }
 function startGame() {
 	board = new Board();
 	board.initialiseBoard();
-	initialisePlayers();
+	[p1, p2] = initialisePlayers();
+	activePlayer = p1;
 }
-
-activePlayer = p1;
