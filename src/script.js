@@ -4,7 +4,8 @@ import Player from "./player.js";
 const Actions = Object.freeze({
 	BUY: "buy",
 	BURN: "burn",
-	DAMAGE: "damage"
+	DAMAGE: "damage",
+	DISCARD: "discard"
 });
 
 const Colours = Object.freeze({
@@ -20,6 +21,8 @@ const rkSlot = document.querySelector(".board-pos.rk");
 const bjSlot = document.querySelector(".board-pos.bj");
 const bqSlot = document.querySelector(".board-pos.bq");
 const bkSlot = document.querySelector(".board-pos.bk");
+
+const actionButtons = [...document.getElementsByClassName("action")];
 
 let rrPile, rjPile, rqPile, rkPile,
 	brPile, bjPile, bqPile, bkPile,
@@ -76,7 +79,7 @@ function toggleCardSelected(event) {
 		element.classList.remove("selected");
 	}
 
-	toggleAvailableActions();
+	toggleActionButtons();
 }
 
 function getSelectedCardsAsArray() {
@@ -86,7 +89,7 @@ function getSelectedCardsAsArray() {
 function getCardColours(cards) {
 	if (cards.every((card) => card.classList.contains(Colours.RED))) {
 		return Colours.RED;
-	} else if (selectedCards.every((card) => card.classList.contains(Colours.BLACK))) {
+	} else if (cards.every((card) => card.classList.contains(Colours.BLACK))) {
 		return Colours.BLACK;
 	} else {
 		return Colours.MIX;
@@ -96,6 +99,10 @@ function getCardColours(cards) {
 function getAvailableActions() {
 	let cards = getSelectedCardsAsArray();
 	let actions = [];
+
+	if (cards.length == 0) {
+		return actions;
+	}
 
 	if (getCardColours(cards) == Colours.RED) {
 		actions.push(Actions.BUY);
@@ -112,18 +119,24 @@ function getAvailableActions() {
 	return actions;
 }
 
-// ? call every time a card in hand is selected/deselected
-// function toggleActionButtons() {
-// 	let actions = getAvailableActions();	
-// }
+// called every time a card in hand is selected/deselected
+function toggleActionButtons() {
+	let actions = getAvailableActions();
+	if (actions.length == 0) {
+		actionButtons.forEach(button => button.hidden = true);
+		return;
+	}
 
-// ? make it so buttons only appear when you have the appropriate cards selected ?
-// ? i.e. each time a card is selected/deselected, update the button ?
+	actionButtons.forEach(button => button.hidden = !actions.includes(button.id));
+}
+
 function burn(cards) {
 	activePlayer.hand.remove(cards);
 }
 
-function buy() { }
+function buy() { 
+	// add bought card to activePlayer's discard pile
+}
 
 function damage() { }
 
