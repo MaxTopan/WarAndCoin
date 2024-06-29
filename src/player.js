@@ -1,6 +1,8 @@
 import Deck from "./deck.js"
 
 const hitPoints = 40;
+export const players = { p1: null, p2: null };
+export let activePlayer;
 
 export default class Player {
     constructor(hitPoints, drawPile, hand = [], discardPile = []) {
@@ -30,22 +32,21 @@ export default class Player {
 }
 
 export function initialisePlayers() {
-    let p1, p2;
 
     let rStarters = new Deck(["♥", "♦"], ["2", "3", "4"]);
     let bStarters = new Deck(["♠", "♣"], ["2", "3", "4"]);
 
-    p1 = new Player(hitPoints, rStarters.draw(3).concat(bStarters.draw(3)));
-    p1.drawPile.shuffle();
+    players.p1 = new Player(hitPoints, rStarters.draw(3).concat(bStarters.draw(3)));
+    players.p1.drawPile.shuffle();
 
-    p2 = new Player(hitPoints, rStarters.draw(3).concat(bStarters.draw(3)));
-    p2.drawPile.shuffle();
+    players.p2 = new Player(hitPoints, rStarters.draw(3).concat(bStarters.draw(3)));
+    players.p2.drawPile.shuffle();
 
-    p1.draw(4);
-    p2.draw(4);
+    players.p1.draw(4);
+    players.p2.draw(4);
 
-    console.log(`p1 hand: ${p1.hand.toString()}`);
-    console.log(`p1 deck: ${p1.drawPile.toString()}`);
+    console.log(`p1 hand: ${players.p1.hand.toString()}`);
+    console.log(`p1 deck: ${players.p1.drawPile.toString()}`);
 
-    return [p1, p2];
+    activePlayer = players.p1;
 }

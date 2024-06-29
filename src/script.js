@@ -1,12 +1,11 @@
 import Deck from "./deck.js";
-import Player, { initialisePlayers } from "./player.js";
+import Player, { initialisePlayers, players, activePlayer } from "./player.js";
 import Board from "./board.js"
 import { Colours, Actions } from "./constants.js"
 
 const actionButtons = [...document.getElementsByClassName("action")];
 
 let board;
-let p1, p2, activePlayer;
 
 window.onload = function () {
 	var parentDiv = document.querySelector(".board-container");
@@ -87,6 +86,5 @@ function damage() { }
 function startGame() {
 	board = new Board();
 	board.initialiseBoard();
-	[p1, p2] = initialisePlayers();
-	activePlayer = p1;
+	initialisePlayers();
 }
