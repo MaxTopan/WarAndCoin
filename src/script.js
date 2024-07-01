@@ -5,8 +5,14 @@ import { toggleActionButtons } from "./actions.js";
 let board;
 
 window.onload = function () {
-	var parentDiv = document.querySelector(".board-container");
-	parentDiv.addEventListener("click", toggleCardSelected);
+	var boardContainer = document.querySelector(".board-container");
+
+	boardContainer.addEventListener("click", function(event) {
+		if (event.target !== boardContainer && !event.target.classList.contains("back") && boardContainer.contains(event.target)) {
+			toggleCardSelected(event);
+		}
+		});
+
 	startGame();
 };
 
@@ -17,6 +23,7 @@ function toggleCardSelected(event) {
 	} else {
 		element.classList.remove("selected");
 	}
+
 
 	//! probably replace with something more elegant - this call could get confusing since it's in actions.js
 	toggleActionButtons();
