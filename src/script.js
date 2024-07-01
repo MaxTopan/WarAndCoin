@@ -1,8 +1,6 @@
-import Deck from "./deck.js";
-import Player, { initialisePlayers, players, activePlayer } from "./player.js";
+import { initialisePlayers } from "./player.js";
 import Board from "./board.js";
-import { Colours, Actions } from "./constants.js";
-import { toggleActionButtons, actionButtons, burn, buy, damage } from "./actions.js";
+import { toggleActionButtons } from "./actions.js";
 
 let board;
 
