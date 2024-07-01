@@ -1,6 +1,6 @@
 import { initialisePlayers } from "./player.js";
 import Board from "./board.js";
-import { toggleActionButtons } from "./actions.js";
+import { initialiseActions, toggleActionButtons } from "./actions.js";
 
 let board;
 export let handContainer;
@@ -35,4 +35,5 @@ function startGame() {
 	board = new Board();
 	board.initialiseBoard();
 	initialisePlayers();
+	initialiseActions();
 }

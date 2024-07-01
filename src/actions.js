@@ -1,7 +1,28 @@
 import { Actions, Colours } from './constants.js';
 import { getCardColours, getSelectedCardsAsArray } from './cardHelpers.js';
+import { players } from './player.js';
+import Card from './deck.js'
 
 export const actionButtons = [...document.getElementsByClassName("action")];
+export const actions = { burn, buy, damage };
+
+export function initialiseActions() {
+    actionButtons.forEach(button => {
+        switch (button.id) {
+            case "burn":
+                button.onclick = burn;
+                break;
+            case "buy":
+                button.onclick = buy;
+                break;
+            case "damage":
+                button.onclick = damage;
+                break;
+        }
+    });
+
+    toggleActionButtons();
+}
 
 // called every time a card in hand is selected/deselected
 export function toggleActionButtons() {
@@ -13,8 +34,6 @@ export function toggleActionButtons() {
 
     actionButtons.forEach(button => button.hidden = !actions.includes(button.id));
 }
-
-
 
 function getAvailableActions() {
     let cards = getSelectedCardsAsArray();
@@ -40,13 +59,16 @@ function getAvailableActions() {
     return actions;
 }
 
-
-export function burn(cards) {
-    activePlayer.hand.remove(cards);
+function burn(cards) {
+    console.log("burn called");
+    //activePlayer.hand.remove(cards);
 }
 
 export function buy() {
+    console.log("buy called");
     // add bought card to activePlayer's discard pile
 }
 
-export function damage() { }
+function damage() {
+    console.log("damage called");
+}
