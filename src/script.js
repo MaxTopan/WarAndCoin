@@ -3,15 +3,17 @@ import Board from "./board.js";
 import { toggleActionButtons } from "./actions.js";
 
 let board;
+export let handContainer;
 
 window.onload = function () {
 	var boardContainer = document.querySelector(".board-container");
+	handContainer = document.getElementById("hand-container");
 
-	boardContainer.addEventListener("click", function(event) {
-		if (event.target !== boardContainer && !event.target.classList.contains("back") && boardContainer.contains(event.target)) {
+	handContainer.addEventListener("click", function (event) {
+		if (event.target !== handContainer && handContainer.contains(event.target)) {
 			toggleCardSelected(event);
 		}
-		});
+	});
 
 	startGame();
 };

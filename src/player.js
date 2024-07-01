@@ -1,4 +1,5 @@
 import Deck from "./deck.js"
+import { handContainer } from "./script.js"
 
 const hitPoints = 40;
 export const players = { p1: null, p2: null };
@@ -49,4 +50,14 @@ export function initialisePlayers() {
     console.log(`p1 deck: ${players.p1.drawPile.toString()}`);
 
     activePlayer = players.p1;
+
+    displayHand(players.p1);
+}
+
+function displayHand(player) {
+    player.hand.cards.forEach(card => {
+        let cardDiv = card.getHTML();
+        cardDiv.classList.add("hand");
+        handContainer.appendChild(cardDiv);
+    });
 }

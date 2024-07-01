@@ -148,14 +148,20 @@ main {
     transform: rotate(180deg);
 }
 
-.hand-container {
+.card.hand {
+    margin: 2px;
+}
+
+#hand-container {
     position: sticky;
     height: 15%;
     width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: auto;
     bottom: 0em;
     background-color: hotpink;
-
 }
 
 .actions-container {
