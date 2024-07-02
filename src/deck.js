@@ -1,5 +1,6 @@
 const SUITS = ["♠", "♣", "♥", "♦"];
 const VALUES = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+const VALUEMAP = { "A": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "10": 10, "J": 11, "Q": 12, "K": 13 };
 
 export default class Deck {
 	constructor(suits = SUITS, values = VALUES, startShuffled = true) {
@@ -59,7 +60,7 @@ export default class Deck {
 			this.cards.splice(index, 1);
 		}
 	}
-	
+
 	// draw @num cards from the top of the deck
 	draw(num = 1) {
 		let drawn = [];
@@ -96,7 +97,8 @@ export class Card {
 		const cardDiv = document.createElement("div");
 		cardDiv.innerText = this.suit;
 		cardDiv.classList.add("card", this.color);
-		cardDiv.dataset.value = `${this.value} ${this.suit}`;
+		cardDiv.dataset.valuesuit = `${this.value} ${this.suit}`;
+		cardDiv.dataset.rank = `${VALUEMAP[this.value]}`;
 		return cardDiv;
 	}
 }

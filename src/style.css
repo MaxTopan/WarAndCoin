@@ -123,7 +123,7 @@ main {
 .card::before,
 .card::after {
     position: absolute;
-    content: attr(data-value);
+    content: attr(data-valuesuit);
     font-size: 2rem;
 }
 
@@ -133,7 +133,7 @@ main {
 
 .face.card::before,
 .face.card::after {
-    content: attr(data-value);
+    content: attr(data-valuesuit);
     content: attr(data-shield);
 } */
 
