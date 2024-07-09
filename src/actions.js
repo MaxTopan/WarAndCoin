@@ -1,12 +1,11 @@
 import { Actions, Colours } from './constants.js';
 import { getCardColours, getSelectedCardsAsArray } from './cardHelpers.js';
-import { players } from './player.js';
-import Card from './deck.js'
 
 export const actionButtons = [...document.getElementsByClassName("action")];
 export const actions = { burn, buy, damage };
 
 export function initialiseActions() {
+    //! I'm so certain there's a better way to do this, but ¯\_(ツ)_/¯ it works for now
     actionButtons.forEach(button => {
         switch (button.id) {
             case "burn":
@@ -59,16 +58,28 @@ function getAvailableActions() {
     return actions;
 }
 
-function burn(cards) {
-    console.log("burn called");
+function getValueTotal(cards) {
+    let total = 0;
+    cards.forEach(card => {total += Number(card.getAttribute('data-rank'))});
+    return total;
+}
+
+function burn() {
+    let cards = getSelectedCardsAsArray();
+    console.log(`burn: ${cards}`);
     //activePlayer.hand.remove(cards);
 }
 
-export function buy() {
-    console.log("buy called");
+function buy() {
+    let cards = getSelectedCardsAsArray();
+    let total = getValueTotal(cards);
+    console.log(`buy: ${total}`);
     // add bought card to activePlayer's discard pile
 }
 
 function damage() {
-    console.log("damage called");
+    let cards = getSelectedCardsAsArray();
+    let total = getValueTotal(cards);
+    console.log(`damage: ${total}`);
+    // take total off of other player's health
 }
