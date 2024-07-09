@@ -23,18 +23,18 @@ export default class Deck {
 		return this.cards.length;
 	}
 
+	get isEmpty() {
+		return this.cards.length == 0;
+	}
+
 	// convert contents of deck to string
 	toString() {
 		let cards = "";
-		for (let i = 0; i < this.numOfCards; i++) {
+		for (let i = 0; i < this.length; i++) {
 			cards += this.cards[i].toString() + ", ";
 		}
 
 		return cards;
-	}
-
-	get numOfCards() {
-		return this.cards.length;
 	}
 
 	// adds specified cards to the deck
@@ -72,7 +72,7 @@ export default class Deck {
 
 	// fisher-yates shuffle
 	shuffle() {
-		for (let i = this.numOfCards - 1; i > 0; i--) {
+		for (let i = this.length - 1; i > 0; i--) {
 			let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
 			[this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]];
 		}

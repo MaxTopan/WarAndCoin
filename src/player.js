@@ -1,12 +1,12 @@
 import Deck from "./deck.js"
-import { handContainer } from "./script.js"
+import { handContainer } from "./game.js"
 
 const hitPoints = 40;
 export const players = { p1: null, p2: null };
 export let activePlayer;
 
 export default class Player {
-    constructor(hitPoints, drawPile, hand = [], discardPile = []) {
+    constructor(hitPoints, drawPile = [], hand = [], discardPile = []) {
         this.hitPoints = hitPoints;
         this.drawPile = Deck.setCards(drawPile);
 
@@ -16,19 +16,18 @@ export default class Player {
     }
 
     draw(num = 1) {
-        this.hand.add(this.drawPile.draw(num));
+        for (let i = 0; i < num; i++) {
+            if (this.drawPile.isEmpty) {
+                this.drawPile.add(this.discardPile.draw(this.discardPile.length));
+                this.drawPile.shuffle();
+            }
+
+            this.hand.add(this.drawPile.draw());
+        }
     }
-
-    select(cards) {
-
-    }
-
-    // play() {
-
-    // }
 
     discardHand() {
-        this.discardPile.add(this.hand.cards);
+        this.discardPile.add(this.hand.draw(this.hand.length));
     }
 }
 
