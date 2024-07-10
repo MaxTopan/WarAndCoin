@@ -1,7 +1,3 @@
-/*
-* @jest-environment jsdom
-*/
-
 import Player, {initialisePlayers, activePlayer, players} from '../src/player.js';
 import Deck from '../src/deck.js';
 

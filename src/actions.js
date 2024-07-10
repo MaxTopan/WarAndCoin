@@ -1,5 +1,6 @@
 import { Actions, Colours } from './constants.js';
 import { getCardColours, getSelectedCardsAsArray } from './cardHelpers.js';
+import { activePlayer } from './player.js';
 
 export const actionButtons = [...document.getElementsByClassName("action")];
 export const actions = { burn, buy, damage };
@@ -66,8 +67,8 @@ function getValueTotal(cards) {
 
 function burn() {
     let cards = getSelectedCardsAsArray();
-    console.log(`burn: ${cards}`);
-    //activePlayer.hand.remove(cards);
+    activePlayer.hand.remove(cards);
+    activePlayer.updateHand();
 }
 
 function buy() {

@@ -29,6 +29,21 @@ export default class Player {
     discardHand() {
         this.discardPile.add(this.hand.draw(this.hand.length));
     }
+
+    //* this can be optimised, but for now w/e it's fine
+    updateHand() {
+        let cards = document.querySelectorAll(".hand");
+        cards.forEach(card => {
+            card.classList.remove("hand");
+            handContainer.removeChild(card);
+        })
+
+        this.hand.cards.forEach(card => {
+            let cardDiv = card.getHTML();
+            cardDiv.classList.add("hand");
+            handContainer.appendChild(cardDiv);
+        });
+    }
 }
 
 export function initialisePlayers() {
@@ -50,13 +65,5 @@ export function initialisePlayers() {
 
     activePlayer = players.p1;
 
-    displayHand(players.p1);
-}
-
-function displayHand(player) {
-    player.hand.cards.forEach(card => {
-        let cardDiv = card.getHTML();
-        cardDiv.classList.add("hand");
-        handContainer.appendChild(cardDiv);
-    });
+    activePlayer.updateHand();
 }
