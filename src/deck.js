@@ -50,15 +50,34 @@ export default class Deck {
 
 	// remove specified cards from the deck
 	remove(toRemove) {
-		if (toRemove instanceof Card) {
-			let index = this.cards.indexOf(toRemove);
-			if (index != -1) this.cards.splice(index, 1);
+		if (toRemove instanceof Card || toRemove instanceof HTMLDivElement)
+			toRemove = [toRemove];
+
+		// check if array contains html cards or Card objects
+		if (toRemove[0] instanceof Card) {
+			// cards must be multiple Card objects
+			for (let card of toRemove) {
+				let index = this.getCardIndex(card);
+				if (index != -1) this.cards.splice(index, 1);
+			}
 			return;
 		}
+
+		//if (toRemove[0] instanceof HTMLDivElement) {
 		for (let card of toRemove) {
-			let index = this.cards.indexOf(card);
-			this.cards.splice(index, 1);
+			let index = this.htmlGetCardIndex(card);
+			if (index != -1) this.cards.splice(index, 1);
 		}
+		return;
+		//}
+	}
+
+	htmlGetCardIndex(card) {
+		return this.cards.findIndex(element => element.value == card.dataset.value && element.suit == card.dataset.suit);
+	}
+
+	getCardIndex(card) {
+		return this.cards.findIndex(element => element.value == card.value && element.suit == card.suit);
 	}
 
 	// draw @num cards from the top of the deck
@@ -98,6 +117,8 @@ export class Card {
 		cardDiv.innerText = this.suit;
 		cardDiv.classList.add("card", this.color);
 		cardDiv.dataset.valuesuit = `${this.value} ${this.suit}`;
+		cardDiv.dataset.value = `${this.value}`;
+		cardDiv.dataset.suit = `${this.suit}`;
 		cardDiv.dataset.rank = `${VALUEMAP[this.value]}`;
 		return cardDiv;
 	}
