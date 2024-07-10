@@ -12,8 +12,12 @@ describe('Player class', () => {
         player = new Player(40, drawStarters.cards);
     });
 
-    // describe('Prelims', () =>{
-    // });
+    describe('Prelims', () =>{
+        test('player should initialise correctly', () =>{
+            expect(player.drawPile.length).toBe(3);
+            expect(player.hitPoints).toBe(40);
+        });
+    });
 
     describe('Draw', () => {
         test('should move single card from draw pile to hand', () =>{
