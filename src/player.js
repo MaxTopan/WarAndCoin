@@ -26,12 +26,18 @@ export default class Player {
         }
     }
 
-    discardHand() {
-        this.discardPile.add(this.hand.draw(this.hand.length));
+    discard(cards) {
+        this.discardPile.add(cards);
+        this.hand.remove(cards);
     }
-
+    
+    discardHand() {
+        this.discard(this.hand.cards);
+    }
+    
     //* this can be optimised, but for now w/e it's fine
-    updateHand() {
+    //! do something like getting all cards in hand, filter using .card and remove any that need removing add any that need adding
+    updateHand() {     
         let cards = document.querySelectorAll(".hand");
         cards.forEach(card => {
             card.classList.remove("hand");
@@ -44,6 +50,10 @@ export default class Player {
             handContainer.appendChild(cardDiv);
         });
     }
+}
+
+export function toggleActivePlayer() {
+    activePlayer = activePlayer === players.p1 ? players.p2 : players.p1;
 }
 
 export function initialisePlayers() {
