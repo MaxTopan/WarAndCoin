@@ -63,13 +63,11 @@ export default class Deck {
 			return;
 		}
 
-		//if (toRemove[0] instanceof HTMLDivElement) {
 		for (let card of toRemove) {
 			let index = this.htmlGetCardIndex(card);
 			if (index != -1) this.cards.splice(index, 1);
 		}
 		return;
-		//}
 	}
 
 	htmlGetCardIndex(card) {
@@ -131,22 +129,15 @@ function newDeck(suits, values) {
 		});
 	});
 }
-/* ATTEMPTING TO IMPLEMENT FACE CARD SHILED VALUES */
-// class FaceCard extends Card {
-//     constructor(suit, value) {
-//         super(suit, value);
-//         switch (this.value){
-//             case "J":
-//                 this.shield = 5;
-//                 break;
-//             case "Q":
-//                 this.shield = 10;
-//                 break;
-//             case "K":
-//                 this.shield = 15;
-//                 break;
-//         default:
-//             console.error(`Invalid value for face card: ${this.value}`)
-//         }
-//     }
-// }
+
+export function getCardObject(htmlCard) {
+	return new Card(htmlCard.dataset.suit, htmlCard.dataset.value);
+}
+
+export function getCardObjects(htmlCards) {
+	let cards = []
+	for (let htmlCard of htmlCards) {
+		cards.push(getCardObject(htmlCard));
+	}
+	return cards;
+}
