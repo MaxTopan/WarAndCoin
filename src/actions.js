@@ -85,8 +85,11 @@ function damage() {
     let total = getValueTotal(cards);
 
     console.log(`damage: ${total}`);
+
     // take total off of other player's health
-    
+    players.inactive.loseHealth(total);
+
+    endTurn(cards);
 }
 
 function endTurn(cardsUsed = []) {
@@ -95,13 +98,14 @@ function endTurn(cardsUsed = []) {
         players.active.discard(getCardObjects(cardsUsed));
     }
 
+    players.active.drawToFull();
+
+    console.log(`p1 health: ${players.p1.hitPoints}`);
+    console.log(`p2 health: ${players.p2.hitPoints}`);
+
     // offer option to discard rest of hand
     
-    // switch active player
-    toggleActivePlayer();
-    
-    // refresh available action buttons
+    toggleActivePlayer();    
     toggleActionButtons();
-
     players.active.updateHand();
 }

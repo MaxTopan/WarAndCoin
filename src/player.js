@@ -10,8 +10,14 @@ export default class Player {
         this.drawPile = Deck.setCards(drawPile);
 
         this.hand = Deck.setCards(hand);
+        this.handSize = 4;
         this.discardPile = Deck.setCards(discardPile);
         this.selectedCards = [];
+    }
+
+    drawToFull(num = this.handSize) {
+        let numToDraw = num - this.hand.length;
+        this.draw(numToDraw);
     }
 
     draw(num = 1) {
@@ -32,6 +38,11 @@ export default class Player {
 
     discardHand() {
         this.discard(this.hand.cards);
+    }
+
+    loseHealth(num) {
+        //TODO: update once shields are introduced
+        this.hitPoints -= num;
     }
 
     //* this can be optimised, but for now w/e it's fine
