@@ -1,6 +1,6 @@
 import { Actions, Colours } from './constants.js';
 import { getCardColours, getSelectedCardsAsArray } from './cardHelpers.js';
-import { activePlayer, toggleActivePlayer } from './player.js';
+import { players, toggleActivePlayer } from './player.js';
 import { getCardObjects } from './deck.js';
 
 export const actionButtons = [...document.getElementsByClassName("action")];
@@ -68,7 +68,7 @@ function getValueTotal(cards) {
 
 function burn() {
     let cards = getSelectedCardsAsArray();
-    activePlayer.hand.remove(cards);
+    players.active.hand.remove(cards);
     endTurn();
 }
 
@@ -76,7 +76,7 @@ function buy() {
     let cards = getSelectedCardsAsArray();
     let total = getValueTotal(cards);
     console.log(`buy: ${total}`);
-    // add bought card to activePlayer's discard pile
+    // add bought card to active player's discard pile
     endTurn(cards);
 }
 
@@ -84,16 +84,15 @@ function damage() {
     let cards = getSelectedCardsAsArray();
     let total = getValueTotal(cards);
 
-
-
     console.log(`damage: ${total}`);
     // take total off of other player's health
+    
 }
 
-function endTurn(cards = []) {
+function endTurn(cardsUsed = []) {
     // move cards from hand to discard pile
-    if (cards.length > 0) {
-        activePlayer.discard(getCardObjects(cards));
+    if (cardsUsed.length > 0) {
+        players.active.discard(getCardObjects(cardsUsed));
     }
 
     // offer option to discard rest of hand
@@ -104,5 +103,5 @@ function endTurn(cards = []) {
     // refresh available action buttons
     toggleActionButtons();
 
-    activePlayer.updateHand();
+    players.active.updateHand();
 }

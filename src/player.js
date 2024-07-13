@@ -2,8 +2,7 @@ import Deck from "./deck.js"
 import { handContainer } from "./game.js"
 
 const hitPoints = 40;
-export const players = { p1: null, p2: null };
-export let activePlayer;
+export const players = { p1: null, p2: null, active: null, inactive: null };
 
 export default class Player {
     constructor(hitPoints, drawPile = [], hand = [], discardPile = []) {
@@ -30,14 +29,14 @@ export default class Player {
         this.discardPile.add(cards);
         this.hand.remove(cards);
     }
-    
+
     discardHand() {
         this.discard(this.hand.cards);
     }
-    
+
     //* this can be optimised, but for now w/e it's fine
     //! do something like getting all cards in hand, filter using .card and remove any that need removing add any that need adding
-    updateHand() {     
+    updateHand() {
         let cards = document.querySelectorAll(".hand");
         cards.forEach(card => {
             card.classList.remove("hand");
@@ -53,7 +52,7 @@ export default class Player {
 }
 
 export function toggleActivePlayer() {
-    activePlayer = activePlayer === players.p1 ? players.p2 : players.p1;
+    [players.active, players.inactive] = [players.inactive, players.active];
 }
 
 export function initialisePlayers() {
@@ -73,7 +72,8 @@ export function initialisePlayers() {
     console.log(`p1 hand: ${players.p1.hand.toString()}`);
     console.log(`p1 deck: ${players.p1.drawPile.toString()}`);
 
-    activePlayer = players.p1;
+    players.active = players.p1;
+    players.inactive = players.p2;
 
-    activePlayer.updateHand();
+    players.active.updateHand();
 }
