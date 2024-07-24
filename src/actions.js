@@ -2,6 +2,7 @@ import { Actions, Colours } from './constants.js';
 import { getCardColours, getSelectedCardsAsArray } from './cardHelpers.js';
 import { players, toggleActivePlayer } from './player.js';
 import { getCardObjects } from './deck.js';
+import { updatePlayerUI } from './game.js';
 
 export const actionButtons = [...document.getElementsByClassName("action")];
 export const actions = { burn, buy, damage };
@@ -105,7 +106,8 @@ function endTurn(cardsUsed = []) {
 
     // offer option to discard rest of hand
     
-    toggleActivePlayer();    
+    toggleActivePlayer(); 
+    updatePlayerUI();   
     toggleActionButtons();
     players.active.updateHand();
 }

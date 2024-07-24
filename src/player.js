@@ -47,6 +47,7 @@ export default class Player {
 
     //* this can be optimised, but for now w/e it's fine
     //! do something like getting all cards in hand, filter using .card and remove any that need removing add any that need adding
+    //TODO: move this somewhere it would make sense - UIHelper?
     updateHand() {
         let cards = document.querySelectorAll(".hand");
         cards.forEach(card => {

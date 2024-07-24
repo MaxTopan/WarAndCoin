@@ -152,6 +152,17 @@ main {
     margin: 2px;
 }
 
+#player-info {
+   position: fixed;
+    display:flex;
+    right: 1em;
+    top: 1em;
+    color: white;
+    font-size: 200%;
+    padding: 1em;
+    border: 2px white solid;
+}
+
 #hand-container {
     position: sticky;
     height: 15%;

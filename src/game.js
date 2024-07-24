@@ -1,12 +1,15 @@
 import { initialisePlayers } from "./player.js";
 import Board from "./board.js";
 import { initialiseActions, toggleActionButtons } from "./actions.js";
+import { players } from './player.js';
 
 let board;
+let playerInfo;
 export let handContainer;
 
 window.onload = function () {
 	var boardContainer = document.querySelector(".board-container");
+	playerInfo = document.getElementById("player-info");
 	handContainer = document.getElementById("hand-container");
 
 	handContainer.addEventListener("click", function (event) {
@@ -31,9 +34,15 @@ function toggleCardSelected(event) {
 	toggleActionButtons();
 }
 
+//TODO: refactor UI stuff into UIHelper probably
+export function updatePlayerUI() {
+	playerInfo.innerText = `P1: ${players.p1.hitPoints}\nP2: ${players.p2.hitPoints}\nActive: ${players.active === players.p1 ? "P1" : "P2"}`;
+}
+
 function startGame() {
 	board = new Board();
 	board.initialiseBoard();
 	initialisePlayers();
 	initialiseActions();
+	updatePlayerUI();
 }
