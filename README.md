@@ -1,8 +1,8 @@
 <h1>War & Coin</h1>
 <h2>About</h2>
 War & Coin is a deckbuilding card game that can be played with a normal deck of playing cards. 
-This project is my attempt to learn JS & CSS, and to get my card game out there!
-It's a bit of a mess atm, and I'm sure there are 1000 things I can optimise, but for now I'm just getting the hang of things.
+This project is made using vanilla HTML, CSS & JS. As the project goes on I may incorporate any libraries that seem neccessary.
+This is very much a WIP.
 
 <h2>Rules</h2>
 Players start with 30 life each (40 in 2 player).
